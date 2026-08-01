@@ -149,9 +149,13 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Sam Tsang home">
-          <span className="brand-cn">曾崇瑞</span>
-          <span className="brand-en">SAM TSANG</span>
+        <a className="site-mark" href="#top" aria-label={language === "zh" ? "返回页面顶部" : "Back to top"}>
+          <span className="site-mark-monogram" aria-hidden="true">ST</span>
+          <span className="site-mark-rule" aria-hidden="true" />
+          <span className="site-mark-copy" aria-hidden="true">
+            <strong>OFFICIAL PROFILE</strong>
+            <small>HONG KONG</small>
+          </span>
         </a>
         <nav aria-label="Primary navigation">
           {t.nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
@@ -202,7 +206,6 @@ export default function Home() {
                 <small>HONG KONG · 2026</small>
               </div>
             </div>
-            <div className="portrait-label">INDUSTRY · CAPITAL · TECHNOLOGY</div>
           </aside>
         </div>
         <nav className="hero-index" aria-label="Section index">
