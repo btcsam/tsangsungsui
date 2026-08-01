@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type Language = "zh" | "en";
@@ -161,30 +162,55 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow"><span /> HONG KONG · GREATER CHINA · GLOBAL</p>
-          <h1><span className="name-line">{t.name}</span><span className="name-roman">SAM TSANG</span></h1>
-          <p className="hero-statement">{t.headline.split("\n").map((line) => <span key={line}>{line}</span>)}</p>
-          <p className="hero-intro">{t.intro}</p>
-          <div className="hero-role-line">
-            {t.roleStrip.map((role) => <span key={role}>{role}</span>)}
+        <div className="hero-shell">
+          <div className="hero-copy">
+            <p className="eyebrow"><strong>PUBLIC PROFILE</strong><span /> HONG KONG · GREATER CHINA · GLOBAL</p>
+            <div className="hero-identity">
+              <h1><span className="name-line">{t.name}</span><span className="name-roman">SAM TSANG</span></h1>
+              <div className="mobile-portrait">
+                <Image src="/portrait.jpg" alt={t.portraitAlt} width={1206} height={1593} priority sizes="116px" />
+                <span>HONG KONG</span>
+              </div>
+            </div>
+            <p className="hero-statement">
+              {t.headline.split("\n").map((line, index, lines) => (
+                <span key={line}>
+                  {line}{language === "en" && index < lines.length - 1 ? " " : null}
+                </span>
+              ))}
+            </p>
+            <p className="hero-intro">{t.intro}</p>
+            <div className="hero-role-block">
+              <p className="hero-role-label">{t.current}</p>
+              <div className="hero-role-line">
+                {t.roleStrip.map((role) => <span key={role}>{role}</span>)}
+              </div>
+            </div>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#about">{t.primaryCta}<span>↓</span></a>
+              <a className="button button-secondary" href="#media">{t.secondaryCta}<span>↗</span></a>
+            </div>
           </div>
-          <div className="hero-actions">
-            <a className="button button-primary" href="#about">{t.primaryCta}<span>↓</span></a>
-          </div>
+          <aside className="portrait-wrap">
+            <div className="portrait-card">
+              <div className="portrait-frame">
+                <Image src="/portrait.jpg" alt={t.portraitAlt} width={1206} height={1593} priority sizes="(max-width: 900px) 0px, 360px" />
+              </div>
+              <div className="portrait-meta">
+                <span>OFFICIAL PROFILE</span>
+                <strong>SAM TSANG</strong>
+                <small>HONG KONG · 2026</small>
+              </div>
+            </div>
+            <div className="portrait-label">INDUSTRY · CAPITAL · TECHNOLOGY</div>
+          </aside>
         </div>
-        <div className="portrait-wrap">
-          <div className="portrait-frame">
-            <img src="/portrait.jpg" alt={t.portraitAlt} />
-          </div>
-          <div className="portrait-label">INDUSTRY · CAPITAL · TECHNOLOGY</div>
-        </div>
-        <div className="hero-index" aria-label="Section index">
+        <nav className="hero-index" aria-label="Section index">
           <a href="#about"><span>00</span> PROFILE / 2026</a>
           <a href="#roles"><span>01</span> ROLES</a>
           <a href="#timeline"><span>02</span> TIMELINE</a>
           <a href="#media"><span>03</span> MEDIA</a>
-        </div>
+        </nav>
       </section>
 
       <section className="section about" id="about">
