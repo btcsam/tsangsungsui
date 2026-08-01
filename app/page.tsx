@@ -83,7 +83,7 @@ const copy = {
     contactBody: "欢迎就产业合作、科技项目、峰会演讲、项目孵化及媒体采访进行交流。",
     contactButton: "联系 IDOM Capital",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
-    note: "本网站为本地预览版本 · 信息更新至 2026 年 7 月",
+    note: "官方网站 · 信息更新至 2026 年 8 月",
   },
   en: {
     nav: [["About", "#about"], ["Roles", "#roles"], ["Moments", "#timeline"], ["Media", "#media"]],
@@ -122,7 +122,7 @@ const copy = {
     contactBody: "Open to conversations around industrial partnerships, technology ventures, speaking engagements, incubation and media.",
     contactButton: "Contact IDOM Capital",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
-    note: "Local preview · Information current as of July 2026",
+    note: "Official website · Information current as of August 2026",
   },
 } as const;
 
@@ -137,7 +137,7 @@ export default function Home() {
       "@type": "Person",
       name: "曾崇瑞",
       alternateName: ["Sam Tsang", "TSANG SUNG SUI"],
-      image: "/portrait.jpg",
+      image: "https://tsangsungsui.com/portrait.jpg",
       jobTitle: "Executive President, HCFSME",
       description: "Hong Kong association leader, technology investor and digital economy advocate.",
       sameAs: ["https://idom.capital/", "https://www.hkba.club/membership.html"],
@@ -168,7 +168,7 @@ export default function Home() {
             <div className="hero-identity">
               <h1><span className="name-line">{t.name}</span><span className="name-roman">SAM TSANG</span></h1>
               <div className="mobile-portrait">
-                <Image src="/portrait.jpg" alt={t.portraitAlt} width={1206} height={1593} priority sizes="116px" />
+                <Image src="/portrait.jpg" alt={t.portraitAlt} width={771} height={1018} priority sizes="116px" />
                 <span>HONG KONG</span>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function Home() {
           <aside className="portrait-wrap">
             <div className="portrait-card">
               <div className="portrait-frame">
-                <Image src="/portrait.jpg" alt={t.portraitAlt} width={1206} height={1593} priority sizes="(max-width: 900px) 0px, 360px" />
+                <Image src="/portrait.jpg" alt={t.portraitAlt} width={771} height={1018} priority sizes="(max-width: 900px) 0px, 360px" />
               </div>
               <div className="portrait-meta">
                 <span>OFFICIAL PROFILE</span>
