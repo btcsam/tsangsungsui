@@ -12,6 +12,7 @@ const copy = {
       ["现任职务", "#roles"],
       ["活动", "#timeline"],
       ["媒体", "#media"],
+      ["联系", "#contact"],
     ],
     eyebrow: "SAM TSANG · TSANG SUNG SUI",
     name: "曾崇瑞",
@@ -42,13 +43,14 @@ const copy = {
     rolesKicker: "CURRENT ROLES",
     rolesTitle: "社会职务与企业角色",
     roles: [
-      ["执行会长", "香港中小企业工商联合会（港中联 / HCFSME）"],
-      ["常务副会长", "香港区块链协会（HKBA）"],
-      ["创始人兼 CEO", "IDOM Capital（美国）"],
-      ["董事局主席", "IDN 科技集团（美国）"],
-      ["创会主席", "港中联 Web3.0 行业发展委员会"],
+      ["执行会长", "香港中小企业工商联合会（港中联 / HCFSME）", "https://hcfsme.org"],
+      ["常务副会长", "香港区块链协会（HKBA）", "https://hkba.club"],
+      ["创始人兼 CEO", "IDOM Capital（美国）", "https://idom.capital"],
+      ["董事局主席", "IDN 科技集团（美国）", "https://idntech.io"],
+      ["创会主席", "港中联 Web3.0 行业发展委员会", "https://hcfsme.org"],
       ["副总裁", "盛峻资本（香港）"],
     ],
+    roleWebsite: "访问官网",
     focusLabel: "长期关注",
     focus: ["AI + 金融", "Web3", "RWA", "数字经济", "跨境合作", "中小企业转型"],
     timelineKicker: "SELECTED MOMENTS",
@@ -81,12 +83,13 @@ const copy = {
     contactKicker: "CONNECT",
     contactTitle: "让合作从一次对话开始",
     contactBody: "欢迎就产业合作、科技项目、峰会演讲、项目孵化及媒体采访进行交流。",
-    contactButton: "联系 IDOM Capital",
+    contactButton: "Contact me",
+    contactAria: "个人联系方式",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
     note: "官方网站 · 信息更新至 2026 年 8 月",
   },
   en: {
-    nav: [["About", "#about"], ["Roles", "#roles"], ["Moments", "#timeline"], ["Media", "#media"]],
+    nav: [["About", "#about"], ["Roles", "#roles"], ["Moments", "#timeline"], ["Media", "#media"], ["Contact", "#contact"]],
     eyebrow: "SAM TSANG · TSANG SUNG SUI",
     name: "Sam Tsang",
     headline: "Connecting industry, capital and technology\nto move the digital economy forward.",
@@ -102,7 +105,8 @@ const copy = {
     stats: [["2021—2026", "public activity timeline"], ["10+", "verified WeChat articles"], ["HK · CN · ASEAN", "cross-border network"]],
     rolesKicker: "CURRENT ROLES",
     rolesTitle: "Leadership and enterprise roles",
-    roles: [["Executive President", "Hong Kong Federation of Commerce for SMEs"], ["Executive Vice Chairman", "Hong Kong Blockchain Association"], ["Founder & CEO", "IDOM Capital (United States)"], ["Chairman", "IDN Technology Group (United States)"], ["Founding Chairman", "HCFSME Web3.0 Industry Development Committee"], ["Vice President", "Shengjun Capital (Hong Kong)"]],
+    roles: [["Executive President", "Hong Kong Federation of Commerce for SMEs", "https://hcfsme.org"], ["Executive Vice Chairman", "Hong Kong Blockchain Association", "https://hkba.club"], ["Founder & CEO", "IDOM Capital (United States)", "https://idom.capital"], ["Chairman", "IDN Technology Group (United States)", "https://idntech.io"], ["Founding Chairman", "HCFSME Web3.0 Industry Development Committee", "https://hcfsme.org"], ["Vice President", "Shengjun Capital (Hong Kong)"]],
+    roleWebsite: "Official website",
     focusLabel: "FOCUS AREAS",
     focus: ["AI + Finance", "Web3", "RWA", "Digital Economy", "Cross-border Growth", "SME Transformation"],
     timelineKicker: "SELECTED MOMENTS",
@@ -120,7 +124,8 @@ const copy = {
     contactKicker: "CONNECT",
     contactTitle: "Let collaboration begin with a conversation",
     contactBody: "Open to conversations around industrial partnerships, technology ventures, speaking engagements, incubation and media.",
-    contactButton: "Contact IDOM Capital",
+    contactButton: "Contact me",
+    contactAria: "Personal contact channels",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
     note: "Official website · Information current as of August 2026",
   },
@@ -138,9 +143,23 @@ export default function Home() {
       name: "曾崇瑞",
       alternateName: ["Sam Tsang", "TSANG SUNG SUI"],
       image: "https://tsangsungsui.com/portrait.jpg",
+      url: "https://tsangsungsui.com/",
       jobTitle: "Executive President, HCFSME",
       description: "Hong Kong association leader, technology investor and digital economy advocate.",
-      sameAs: ["https://idom.capital/", "https://www.hkba.club/membership.html"],
+      sameAs: [
+        "https://www.linkedin.com/in/btcsam/",
+        "https://x.com/btcsam",
+        "https://hkba.club",
+        "https://hcfsme.org",
+        "https://idom.capital",
+        "https://idntech.io",
+      ],
+      affiliation: [
+        { "@type": "Organization", name: "Hong Kong Blockchain Association", url: "https://hkba.club" },
+        { "@type": "Organization", name: "Hong Kong Federation of Commerce for SMEs", url: "https://hcfsme.org" },
+        { "@type": "Organization", name: "IDOM Capital", url: "https://idom.capital" },
+        { "@type": "Organization", name: "IDN Technology Group", url: "https://idntech.io" },
+      ],
     },
   };
 
@@ -237,11 +256,12 @@ export default function Home() {
         </div>
         <div className="roles-layout">
           <div className="roles-list">
-            {t.roles.map(([title, organization], index) => (
+            {t.roles.map(([title, organization, url], index) => (
               <article className="role-row" key={organization}>
                 <span className="role-number">0{index + 1}</span>
                 <h3>{title}</h3>
                 <p>{organization}</p>
+                {url ? <a className="role-website" href={url} target="_blank" rel="noreferrer">{t.roleWebsite}<span>↗</span></a> : null}
               </article>
             ))}
           </div>
@@ -292,11 +312,25 @@ export default function Home() {
         <p className="kicker">{t.contactKicker}</p>
         <h2>{t.contactTitle}</h2>
         <p>{t.contactBody}</p>
-        <a className="button button-light" href="mailto:contact@idom.capital">{t.contactButton}<span>↗</span></a>
+        <a className="button contact-button" href="mailto:tsangsungsui@gmail.com">{t.contactButton}<span>↗</span></a>
       </section>
 
       <footer>
-        <p>{t.footer}</p><p>{t.note}</p><a href="#top">↑</a>
+        <p>{t.footer}</p>
+        <p>{t.note}</p>
+        <div className="footer-socials" aria-label={t.contactAria}>
+          <a href="https://www.linkedin.com/in/btcsam/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+            </svg>
+          </a>
+          <a href="https://x.com/btcsam" target="_blank" rel="noreferrer" aria-label="X" title="X">
+            <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.22-6.82-5.96 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" />
+            </svg>
+          </a>
+        </div>
+        <a className="back-to-top" href="#top" aria-label={language === "zh" ? "返回顶部" : "Back to top"}>↑</a>
       </footer>
     </main>
   );
