@@ -12,6 +12,7 @@ const copy = {
       ["现任职务", "#roles"],
       ["活动", "#timeline"],
       ["媒体", "#media"],
+      ["洞见", "/insights/"],
       ["联系", "#contact"],
     ],
     eyebrow: "SAM TSANG · TSANG SUNG SUI",
@@ -86,10 +87,10 @@ const copy = {
     contactButton: "Contact me",
     contactAria: "个人联系方式",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
-    note: "官方网站 · 信息更新至 2026 年 8 月",
+    note: "官方网站 · 信息更新至 2026 年 11 月",
   },
   en: {
-    nav: [["About", "#about"], ["Roles", "#roles"], ["Moments", "#timeline"], ["Media", "#media"], ["Contact", "#contact"]],
+    nav: [["About", "#about"], ["Roles", "#roles"], ["Moments", "#timeline"], ["Media", "#media"], ["Insights", "/insights/"], ["Contact", "#contact"]],
     eyebrow: "SAM TSANG · TSANG SUNG SUI",
     name: "Sam Tsang",
     headline: "Connecting industry, capital and technology\nto move the digital economy forward.",
@@ -127,7 +128,7 @@ const copy = {
     contactButton: "Contact me",
     contactAria: "Personal contact channels",
     footer: "曾崇瑞 · Sam Tsang · TSANG SUNG SUI",
-    note: "Official website · Information current as of August 2026",
+    note: "Official website · Information current as of November 2026",
   },
 } as const;
 
@@ -232,6 +233,7 @@ export default function Home() {
           <a href="#roles"><span>01</span> ROLES</a>
           <a href="#timeline"><span>02</span> TIMELINE</a>
           <a href="#media"><span>03</span> MEDIA</a>
+          <a href="/insights/"><span>04</span> INSIGHTS</a>
         </nav>
       </section>
 
