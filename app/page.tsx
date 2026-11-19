@@ -78,6 +78,10 @@ const copy = {
       ["香港商报", "渝港联动觅商机", "2025.10.26", "https://www.hkcd.com.hk/hkcdweb/content_p/2025/10/26/content_191948.html"],
       ["新浪财经", "两岸服务业大咖集聚重庆", "2024.11.20", "https://finance.sina.com.cn/jjxw/2024-11-20/doc-incwsynq2162426.shtml"],
     ],
+    insightsKicker: "INSIGHTS",
+    insightsTitle: "洞见",
+    insightsBody: "把 AI、Web3 与跨境产业合作的判断写下来，供同行参考；协会与媒体的报道标注来源，不做内容搬运。",
+    insightsCta: "查看全部文章",
     visionKicker: "POINT OF VIEW",
     visionQuote: "技术的价值，不在于概念有多新，而在于能否真正帮助企业降低成本、提升效率，并连接更大的市场。",
     visionCredit: "曾崇瑞 · 关于中小企业数字化转型",
@@ -119,6 +123,10 @@ const copy = {
     mediaIntro: "Multiple reports about one event are grouped into the same narrative while original source pages remain available for verification.",
     read: "View source",
     media: [["HCFSME WeChat", "Hong Kong and Chongqing at the WCIFIT", "2026.06.21", "https://mp.weixin.qq.com/s?__biz=MzkxNTQ5MzA0OQ==&mid=2247488750&idx=1&sn=7c3bcce3e81cf42305292e20f5d9d1ff"], ["HCFSME WeChat", "Hong Kong Entrepreneurs in Guizhou", "2026.05.20", "https://mp.weixin.qq.com/s?__biz=MzkxNTQ5MzA0OQ==&mid=2247488644&idx=1&sn=d7ca70111ce6e2892abd143746c78055"], ["HKBA", "AI + Web3 SME Digital Upgrade Initiative", "2026.06.05", "https://mp.weixin.qq.com/s?__biz=MzkyNDY1MTMzNA==&mid=2247485813&idx=1&sn=90a94e671f7bc9d91881f4506a37cd33"], ["Finet", "Hong Kong Wealth Management Summit", "2026.01.09", "https://www.top100hk.com/ceremony/year12/"], ["Hong Kong Commercial Daily", "Hong Kong–Chongqing Business Delegation", "2025.10.26", "https://www.hkcd.com.hk/hkcdweb/content_p/2025/10/26/content_191948.html"], ["Sina Finance", "Cross-Strait Services Leaders Gather in Chongqing", "2024.11.20", "https://finance.sina.com.cn/jjxw/2024-11-20/doc-incwsynq2162426.shtml"]],
+    insightsKicker: "INSIGHTS",
+    insightsTitle: "Insights",
+    insightsBody: "Judgements on AI, Web3 and cross-border industrial collaboration, written down for peers. Third-party reports are labelled with their source.",
+    insightsCta: "Read all articles",
     visionKicker: "POINT OF VIEW",
     visionQuote: "The value of technology is not how new the idea sounds, but whether it helps businesses lower costs, improve efficiency and reach a larger market.",
     visionCredit: "Sam Tsang · On SME digital transformation",
@@ -180,9 +188,12 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           {t.nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-        <button className="language-toggle" onClick={() => setLanguage(language === "zh" ? "en" : "zh")} aria-label="Switch language">
-          {language === "zh" ? "EN" : "中文"}
-        </button>
+        <div className="header-actions">
+          <a className="header-insights" href="/insights/">{language === "zh" ? "洞见" : "Insights"}</a>
+          <button className="language-toggle" onClick={() => setLanguage(language === "zh" ? "en" : "zh")} aria-label="Switch language">
+            {language === "zh" ? "EN" : "中文"}
+          </button>
+        </div>
       </header>
 
       <section className="hero" id="top">
@@ -308,6 +319,15 @@ export default function Home() {
             </a>
           ))}
         </div>
+      </section>
+
+      <section className="insights-promo" aria-labelledby="insights-promo-title">
+        <div>
+          <p className="kicker">{t.insightsKicker}</p>
+          <h2 id="insights-promo-title">{t.insightsTitle}</h2>
+          <p className="insights-promo-body">{t.insightsBody}</p>
+        </div>
+        <a className="button button-secondary" href="/insights/">{t.insightsCta}<span>↗</span></a>
       </section>
 
       <section className="contact-section" id="contact">

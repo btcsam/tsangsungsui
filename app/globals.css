@@ -661,6 +661,35 @@ footer p { margin: 0; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
+/* ---------- 首页：洞见入口 ---------- */
+
+.header-actions { display: flex; align-items: center; gap: 12px; justify-self: end; }
+.header-insights { display: none; }
+
+.insights-promo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 26px 48px;
+  padding: clamp(52px, 6vw, 84px) clamp(28px, 6.5vw, 120px);
+  background: var(--navy-deep);
+  color: var(--page);
+}
+.insights-promo .kicker { margin-bottom: 18px; color: var(--cyan); }
+.insights-promo h2 {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.insights-promo-body {
+  max-width: 40em;
+  margin: 16px 0 0;
+  color: var(--muted-dark);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
 /* =====================================================================
    INSIGHTS · 洞见栏目（列表 / 文章）
    复用 globals.css 的 header / footer / kicker / 设计变量
@@ -1089,12 +1118,31 @@ footer p { margin: 0; }
 
 /* ---------- 响应式 ---------- */
 
+@media (max-width: 760px) {
+  .header-insights {
+    display: inline-flex;
+    padding: 7px 10px;
+    color: var(--surface);
+    border: 1px solid rgba(240, 243, 247, .34);
+    border-radius: 4px;
+    font-family: var(--english);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    transition: border-color .22s ease, background .22s ease;
+  }
+  .header-insights:hover { border-color: var(--cyan); }
+  .insights-promo { grid-template-columns: 1fr; align-items: start; padding: 40px 20px; }
+  .insights-promo .button { justify-self: start; }
+}
+
 @media (max-width: 860px) {
-  /* 首页索引：5 项在窄屏改为横向滚动，避免折行错位 */
-  .hero-index { display: flex; overflow-x: auto; min-height: 0; scrollbar-width: none; }
-  .hero-index::-webkit-scrollbar { display: none; }
-  .hero-index a { flex: 0 0 auto; min-height: 60px; padding: 0 16px; border-bottom: 0; white-space: nowrap; }
-  .hero-index a:nth-child(2n) { border-right: 1px solid var(--line-dark); }
+  /* 首页索引：5 项两列排布，末项通栏 */
+  .hero-index { grid-template-columns: repeat(2, 1fr); min-height: 0; }
+  .hero-index a { min-height: 60px; padding: 0 14px; border-bottom: 1px solid var(--line-dark); }
+  .hero-index a:nth-child(n+3) { border-bottom: 1px solid var(--line-dark); }
+  .hero-index a:nth-child(2n) { border-right: 0; }
+  .hero-index a:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
 
   .insights-hero {
     padding: calc(66px + clamp(40px, 9vw, 64px)) 20px clamp(44px, 9vw, 64px);
